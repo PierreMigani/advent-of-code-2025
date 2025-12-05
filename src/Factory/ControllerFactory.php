@@ -32,12 +32,7 @@ class ControllerFactory {
             $dayServiceClass = "Service\\Day{$dayNumber}";
             
             if (!class_exists($dayServiceClass)) {
-                // Return a controller that will show a 404
-                return new class($path) extends BaseController {
-                    public function __construct(string $name) {
-                        parent::__construct($name);
-                    }
-                };
+                return new NotFoundController($path);
             }
 
             $dayService = new $dayServiceClass();
@@ -52,10 +47,6 @@ class ControllerFactory {
         }
 
         // Return a controller that will show a 404 for unknown routes
-        return new class($path) extends BaseController {
-            public function __construct(string $name) {
-                parent::__construct($name);
-            }
-        };
+        return new NotFoundController($path);
     }
 }

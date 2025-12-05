@@ -66,6 +66,9 @@ class Response implements ResponseInterface {
         if (!isset($this->headers[$name])) {
             $this->headers[$name] = [];
         }
+        if (!is_array($this->headers[$name])) {
+            $this->headers[$name] = [$this->headers[$name]];
+        }
         $this->headers[$name][] = $value;
         return $this;
     }
