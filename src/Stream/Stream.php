@@ -9,65 +9,65 @@ class Stream implements StreamInterface {
         private string $content = '',
     ) {}
 
-    public function __toString() {
+    public function __toString(): string {
         return $this->content;
     }
 
-    public function close() {
+    public function close(): void {
         $this->content = '';
     }
 
-    public function detach() {
+    public function detach(): mixed {
         $content = $this->content;
         $this->content = '';
         return $content;
     }
 
-    public function getSize() {
+    public function getSize(): ?int {
         return strlen($this->content);
     }
 
-    public function tell() {
+    public function tell(): int {
         return 0;
     }
 
-    public function eof() {
+    public function eof(): bool {
         return true;
     }
 
-    public function isSeekable() {
+    public function isSeekable(): bool {
         return false;
     }
 
-    public function seek($offset, $whence = SEEK_SET) {
+    public function seek(int $offset, int $whence = SEEK_SET): void {
+        // Not seekable
+    }
+
+    public function rewind(): void {
+        // Not seekable
+    }
+
+    public function isWritable(): bool {
         return false;
     }
 
-    public function rewind() {
+    public function write(string $string): int {
+        return 0;
+    }
+
+    public function isReadable(): bool {
         return false;
     }
 
-    public function isWritable() {
-        return false;
+    public function read(int $length): string {
+        return '';
     }
 
-    public function write($string) {
-        return false;
-    }
-
-    public function isReadable() {
-        return false;
-    }
-
-    public function read($length) {
-        return false;
-    }
-
-    public function getContents() {
+    public function getContents(): string {
         return $this->content;
     }
 
-    public function getMetadata($key = null) {
-        return [];
+    public function getMetadata(?string $key = null): mixed {
+        return $key === null ? [] : null;
     }
 }

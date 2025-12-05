@@ -14,54 +14,54 @@ class Uri implements UriInterface {
         private string $fragment = '',
     ) {}
 
-    public function getScheme()
+    public function getScheme(): string
     {
         return $this->scheme;
     }
 
-    public function getAuthority()
+    public function getAuthority(): string
     {
         return $this->authority;
     }
 
-    public function getUserInfo()
+    public function getUserInfo(): string
     {
         return $this->userInfo;
     }
 
-    public function getHost()
+    public function getHost(): string
     {
         return $this->host;
     }
 
-    public function getPort()
+    public function getPort(): ?int
     {
-        return $this->port;
+        return $this->port ?: null;
     }
 
-    public function getPath()
+    public function getPath(): string
     {
         return $this->path;
     }
 
-    public function getQuery()
+    public function getQuery(): string
     {
         return $this->query;
     }
 
-    public function getFragment()
+    public function getFragment(): string
     {
         return $this->fragment;
     }
 
-    public function withScheme($scheme)
+    public function withScheme(string $scheme): UriInterface
     {
         $this->scheme = $scheme;
 
         return $this;
     }
 
-    public function withUserInfo($user, $password = null)
+    public function withUserInfo(string $user, ?string $password = null): UriInterface
     {
         $this->userInfo = $user;
 
@@ -72,42 +72,42 @@ class Uri implements UriInterface {
         return $this;
     }
 
-    public function withHost($host)
+    public function withHost(string $host): UriInterface
     {
         $this->host = $host;
 
         return $this;
     }
 
-    public function withPort($port)
+    public function withPort(?int $port): UriInterface
     {
-        $this->port = $port;
+        $this->port = $port ?? 0;
 
         return $this;
     }
 
-    public function withPath($path)
+    public function withPath(string $path): UriInterface
     {
         $this->path = $path;
 
         return $this;
     }
 
-    public function withQuery($query)
+    public function withQuery(string $query): UriInterface
     {
         $this->query = $query;
 
         return $this;
     }
 
-    public function withFragment($fragment)
+    public function withFragment(string $fragment): UriInterface
     {
         $this->fragment = $fragment;
 
         return $this;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return $this->scheme . '://' . $this->host . $this->path;
     }
