@@ -63,12 +63,7 @@ class Response implements ResponseInterface {
     }
 
     public function withAddedHeader(string $name, mixed $value): ResponseInterface {
-        if (!isset($this->headers[$name])) {
-            $this->headers[$name] = [];
-        }
-        if (!is_array($this->headers[$name])) {
-            $this->headers[$name] = [$this->headers[$name]];
-        }
+        $this->ensureHeaderIsArray($name);
         $this->headers[$name][] = $value;
         return $this;
     }
@@ -84,5 +79,13 @@ class Response implements ResponseInterface {
 
     public function withProtocolVersion(string $version): ResponseInterface {
         return $this;
+    }
+
+    private function ensureHeaderIsArray(string $name): void {
+        if (!isset($this->headers[$name])) {
+            $this->headers[$name] = [];
+        } elseif (!is_array($this->headers[$name])) {
+            $this->headers[$name] = [$this->headers[$name]];
+        }
     }
 }

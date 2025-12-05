@@ -5,6 +5,7 @@ namespace Factory;
 use Controller\BaseController;
 use Controller\HomeController;
 use Controller\DayController;
+use Controller\NotFoundController;
 use League\Plates\Engine;
 
 class ControllerFactory {

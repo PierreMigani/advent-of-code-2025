@@ -36,7 +36,7 @@ class Uri implements UriInterface {
 
     public function getPort(): ?int
     {
-        return $this->port ?: null;
+        return $this->port === 0 ? null : $this->port;
     }
 
     public function getPath(): string
