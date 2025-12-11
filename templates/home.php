@@ -5,6 +5,6 @@
 <!-- list of links to day forms -->
 <div>
     <?php for ($i = 1; $i <= $nbDays; $i++): ?>
-        <a href="/day<?=$i?>">Day <?=$i?></a>
+        <a href="/day0<?=$i?>">Day <?=$i?></a>
     <?php endfor; ?>
 </div>

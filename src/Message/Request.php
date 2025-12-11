@@ -52,7 +52,7 @@ class Request implements ServerRequestInterface {
 
         public function getParsedBody(): ?array
         {
-                return $this->body;
+                return $this->parsedBody;
         }
 
         public function getAttributes(): array
